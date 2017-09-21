@@ -12,3 +12,7 @@ updater.idle()
 @app.route('/')
 def index():
     return 'Hello, I am @AlantisDevBot. Talk with me in the Telegram app.'
+
+
+if __name__ == '__main__':
+    app.run()
