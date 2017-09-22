@@ -15,7 +15,7 @@ def start(bot, update):
 
 def hello(bot, update):
     user = update.message.from_user
-    update.message.reply_text('Hello {}'.format(user.first_name))
+    update.message.reply_text('Hello {}'.format(user.username))
 
 
 def echo(bot, update):
