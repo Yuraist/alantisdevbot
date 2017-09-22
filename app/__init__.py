@@ -9,9 +9,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # db = SQLAlchemy(app)
 
-from bot.bot import updater
+from bot.bot import main
 
-updater.start_polling()
+main()
+
 
 @app.route('/')
 def index():

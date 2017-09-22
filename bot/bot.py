@@ -1,5 +1,12 @@
 import os
+import logging
+
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.INFO)
+
+logger = logging.getLogger(__name__)
 
 
 def start(bot, update):
@@ -14,9 +21,18 @@ def hello(bot, update):
 def echo(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
 
-token = os.environ['TOKEN']
-updater = Updater(token=token)
 
-updater.dispatcher.add_handler(CommandHandler('start', start))
-updater.dispatcher.add_handler(CommandHandler('hello', hello))
-updater.dispatcher.add_handler(MessageHandler(Filters.text, echo))
+def error(bot, update, error):
+    logger.warning('Update "{}" caused error "{}"'.format(update, error))
+
+
+def main():
+    updater = Updater(token=os.environ['TOKEN'])
+    dispatcher = updater.dispatcher
+
+    dispatcher.add_handler(CommandHandler('start', start))
+    dispatcher.add_handler(CommandHandler('hello', hello))
+    dispatcher.add_handler(MessageHandler(Filters.text, echo))
+    dispatcher.add_error_handler(error)
+
+    updater.start_polling()
