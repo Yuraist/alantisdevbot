@@ -116,7 +116,7 @@ def incoming_message(bot, update):
     else:
         phrases = ['Посмотреть список услуг', 'Связаться с разработчиком']
         markup = keyboard_markup(phrases)
-        bot.send_message('Извини, но я еще не знаю, как правильно отвечать на такие сообщения. '
+        bot.send_message(chat, text='Извини, но я еще не знаю, как правильно отвечать на такие сообщения. '
                          'Лучше воспользуйся готовыми командами.', reply_markup=markup)
 
 def goods_list(bot, update):
