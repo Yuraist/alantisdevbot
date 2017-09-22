@@ -12,7 +12,7 @@ db = SQLAlchemy(app)
 from bot.bot import main
 from app import models
 
-# main()
+main()
 
 
 @app.route('/')
