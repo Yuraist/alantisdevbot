@@ -12,7 +12,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 from bot.bot import updater
 
 updater.start_polling()
-updater.idle()
 
 @app.route('/')
 def index():
