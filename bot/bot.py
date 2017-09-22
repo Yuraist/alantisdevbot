@@ -2,6 +2,7 @@ import os
 import logging
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram import ReplyKeyboardMarkup, KeyboardButton
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -10,12 +11,16 @@ logger = logging.getLogger(__name__)
 
 
 def start(bot, update):
-    update.message.reply_text('Hello World!')
+    kb_markup = ReplyKeyboardMarkup([[KeyboardButton('Хорошо, можем продолжить беседу!')],
+                                    [KeyboardButton('Хотелось бы пообщаться с ним лично.')]])
+    bot.send_message(chat_id=update.message.chat_id, text='Привет! Я бот-секретарь, созданный @yuraist. '
+                              'Сейчас он немного занят, поэтому ты можешь пообщаться со мной. '
+                              'Я передам ему всю важную информацию.', reply_markup=kb_markup)
 
 
 def hello(bot, update):
     user = update.message.from_user
-    update.message.reply_text('Hello {}'.format(user.username))
+    update.message.reply_text('Привет, {}'.format(user.first_name))
 
 
 def echo(bot, update):
