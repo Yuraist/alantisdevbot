@@ -11,7 +11,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 from bot.bot import main
 
-main()
+# main()
 
 
 @app.route('/')
