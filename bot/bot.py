@@ -55,9 +55,11 @@ def incoming_message(bot, update):
         bot.send_message(chat, text='Отлично! Скажи, тебе нужен свой сайт, мобильное приложение или бот?',
                          reply_markup=markup)
     elif msg == 'Хотелось бы пообщаться с ним лично' or msg == 'Связаться с разработчиком':
+        phrases = ['Посмотреть список услуг', 'Связаться с разработчиком']
+        markup = keyboard_markup(phrases)
         bot.send_message(chat, text='Тогда ты можешь связаться с ним, написав лично в Telegram: @yuraist. '
                                     'Либо же можете поговорить с ним в VK: vk.com/yuraist; '
-                                    'Facebook: fb.com/yuraistom; Email: yura.ist@icloud.com')
+                                    'Facebook: fb.com/yuraistom; Email: yura.ist@icloud.com', reply_markup=markup)
     elif msg == 'Да':
         phrases = ['Мне нужен сайт 👨‍💻',
                    'iOS-приложение 📱',
