@@ -30,9 +30,9 @@ class Order(db.Model):
     __tablename__ = 'order'
 
     id = db.Column(db.Integer, primary_key=True)
-    order_type = db.Column(db.String(64))
+    type = db.Column(db.String(64))
     comment = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<Order #{} type: {}>'.format(self.id, self.order_type)
+        return '<Order #{} type: {}>'.format(self.id, self.type)
